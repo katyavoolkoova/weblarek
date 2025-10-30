@@ -11,15 +11,14 @@ export interface IApi {
   ): Promise<T>;
 }
 
-
-
 export interface IProduct {
+  title: string;
   id: string;
   description: string;
   image: string;
-  title: string;
   category: string;
   price: number | null;
+  index: number;
 }
 
 export interface IBuyer {
@@ -30,12 +29,39 @@ export interface IBuyer {
 }
 
 export type TOrder = {
-  payment: TPayment,
-  email: string,
-  phone: string,
-  address: string,
-  total: number,
-  items: string[]
+  payment: TPayment;
+  email: string;
+  phone: string;
+  address: string;
+  total: number;
+  items: string[];
+};
+
+export interface ICard extends IProduct {
+  buttonText: string;
+  itemCount: number | string;
 }
 
+export interface ICardActions {
+  onClick: (event: MouseEvent) => void;
+}
 
+export interface ISuccessActions {
+  onClick: () => void;
+}
+
+export interface IModal {
+  content: HTMLElement;
+}
+
+export interface IProductResponse {
+  total: number;
+  items: IProduct[];
+}
+
+export interface IErrors {
+  payment?: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+}
