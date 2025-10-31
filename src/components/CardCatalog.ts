@@ -5,7 +5,7 @@ import { ensureElement } from "../utils/utils";
 import { Card } from "./Card";
 
 type CategoryKey = keyof typeof categoryMap;
-export type TCardCatalog = Pick<IProduct, 'image' | "image" | "category">;
+export type TCardCatalog = Pick<IProduct, "image" | "category">;
 
 export class CardCatalog extends Card<TCardCatalog> {
   protected imageElement: HTMLImageElement;

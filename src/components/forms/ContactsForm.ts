@@ -1,9 +1,9 @@
-import { IBuyer } from "../../types";
+
 import { ensureElement } from "../../utils/utils";
 import { IEvents } from "../base/Events";
 import { Form } from "./Form";
 
-export class ContactsForm extends Form<IBuyer> {
+export class ContactsForm extends Form{
     protected emailInput: HTMLInputElement;
     protected phoneInput: HTMLInputElement;
 

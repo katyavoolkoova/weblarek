@@ -35,6 +35,10 @@ export class CardPreview extends Card<TPreviewCard> {
     this.cardButton.textContent = value;
   }
 
+  set description(value: string) {
+    this.textElement.textContent = value;
+  }
+
   set disabled(value: boolean) {
     this.cardButton.disabled = value;
     this.cardButton.classList.toggle("button_disabled", value);

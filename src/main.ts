@@ -13,7 +13,7 @@ import { Modal } from "./components/Modal";
 import { Header } from "./components/Header";
 import { BasketView } from "./components/BasketView";
 import { IProduct } from "./types";
-import { Success } from "./components/base/Success";
+import { Success } from "./components/Success";
 import { CardBasket } from "./components/CardBasket";
 import { PaymentForm } from "./components/forms/PaymentForm";
 import { ContactsForm } from "./components/forms/ContactsForm";
@@ -144,7 +144,6 @@ events.on("buyer:changed", (data: { field: string }) => {
   const buyerData = buyerModel.getData();
   if (data.field === "payment" || data.field === "address") {
     if (paymentForm) {
-      // Обновляем форму оплаты (проверяем только payment и address)
       paymentForm.payment = buyerData.payment;
       paymentForm.address = buyerData.address;
 
@@ -156,7 +155,6 @@ events.on("buyer:changed", (data: { field: string }) => {
   }
   if (data.field === "phone" || data.field === "email") {
     if (contactsForm) {
-      // Обновляем форму контактов (проверяем только email и phone)
       contactsForm.email = buyerData.email;
       contactsForm.phone = buyerData.phone;
 

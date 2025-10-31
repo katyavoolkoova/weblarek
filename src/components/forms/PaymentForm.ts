@@ -3,7 +3,7 @@ import { IEvents } from "../base/Events";
 import { TPayment } from "../Models/Buyer";
 import { Form } from "./Form";
 
-export class PaymentForm extends Form<TPayment> {
+export class PaymentForm extends Form {
   protected paymentButton: HTMLButtonElement[];
   protected addressInput: HTMLInputElement;
 
@@ -13,9 +13,10 @@ export class PaymentForm extends Form<TPayment> {
     this.paymentButton = Array.from(
       this.container.querySelectorAll("button[name]")
     );
-    this.addressInput = /*container.querySelector(
-      'input[name="address"]'
-    ) as HTMLInputElement;*/ensureElement<HTMLInputElement>('input[name="address"]', this.container);
+    this.addressInput = ensureElement<HTMLInputElement>(
+      'input[name="address"]',
+      this.container
+    );
     this.paymentButton.forEach((button) => {
       button.addEventListener("click", () => {
         events.emit("order:changed", {
@@ -34,12 +35,13 @@ export class PaymentForm extends Form<TPayment> {
   }
 
   set payment(value: TPayment) {
-    /*this.paymentButton.forEach((button) => {
-      const isActive = button.name === value;
-      button.classList.toggle("button_alt-active", isActive);*/this.paymentButton.forEach(button => {
-      button.classList.toggle('button_alt-active', button.getAttribute('name') === value);
+    this.paymentButton.forEach((button) => {
+      button.classList.toggle(
+        "button_alt-active",
+        button.getAttribute("name") === value
+      );
     });
-  };
+  }
 
   set address(value: string) {
     this.addressInput.value = value;

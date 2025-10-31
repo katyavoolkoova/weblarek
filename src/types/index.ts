@@ -50,10 +50,6 @@ export interface ISuccessActions {
   onClick: () => void;
 }
 
-export interface IModal {
-  content: HTMLElement;
-}
-
 export interface IProductResponse {
   total: number;
   items: IProduct[];

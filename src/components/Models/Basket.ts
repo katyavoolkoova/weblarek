@@ -2,18 +2,17 @@ import { IProduct } from "../../types";
 import { IEvents } from "../base/Events";
 
 export class Basket {
-  protected products: IProduct[] = [];
+  protected products: IProduct[];
 
   constructor(protected events: IEvents) {
     this.products = [];
-    this.events = events;
   }
 
   getProducts(): IProduct[] {
     return this.products;
   }
 
-  addProduct(product: IProduct): void {
+  addProduct(product: IProduct) {
     this.products.push(product);
     this.events.emit("basket:changed");
   }
@@ -23,16 +22,14 @@ export class Basket {
     this.events.emit("basket:changed");
   }
 
-  clear(): void {
+  clear() {
     this.products = [];
     this.events.emit("basket:changed");
   }
 
   getFullPrice(): number {
     return this.products.reduce(
-      (sum, product) => sum + (product.price || 0),
-      0
-    );
+      (sum, product) => sum + (product.price || 0), 0);
   }
 
   getProductCount(): number {

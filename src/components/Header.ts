@@ -22,8 +22,9 @@ export class Header extends Component<IHeader> {
       this.container
     );
 
-    this.basketButton.addEventListener("click", () => 
-      this.events.emit("basket:open"));
+    this.basketButton.addEventListener("click", () =>
+      this.events.emit("basket:open")
+    );
   }
 
   set counter(value: number) {

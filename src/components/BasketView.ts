@@ -1,14 +1,13 @@
-
 import { createElement, ensureElement } from "../utils/utils";
 import { Component } from "./base/Component";
 import { IEvents } from "./base/Events";
 
 export interface IBasketContent {
   items: HTMLElement[];
-  total: number;
+  price: number;
 }
 
-export class BasketView<IBasketContent> extends Component<IBasketContent> {
+export class BasketView extends Component<IBasketContent> {
   protected listContainer: HTMLElement;
   protected priceContainer: HTMLElement;
   protected orderButton: HTMLButtonElement;
@@ -32,6 +31,8 @@ export class BasketView<IBasketContent> extends Component<IBasketContent> {
     this.orderButton.addEventListener("click", () => {
       this.events.emit("order:open");
     });
+
+    this.items = [];
   }
 
   set items(items: HTMLElement[]) {
@@ -46,8 +47,8 @@ export class BasketView<IBasketContent> extends Component<IBasketContent> {
     }
   }
 
-  set price(price: number) {
-    this.priceContainer.textContent = `${price} синапсов`;
+  set price(value: number) {
+    this.priceContainer.textContent = `${value} синапсов`;
   }
 
   setCanBuy(isEmpty: boolean) {
